@@ -1,30 +1,29 @@
 var setsBalloon = "4 sets of red, 3 sets of blue, and 3 sets of yellow.";
 ////////////////////////////////////////////////////////////////////////////
-var priceEach = "R4 for red, R5 for blue, and R5.50 for yellow.";
+var priceEach = "R4 for red, R5 for blue, and  R5.50 for yellow.";
 newPriceEach = [];
 latestPriceEach = [];
 ////////////////////////////////////////////////////////////////////
 newSetsBalloon = [];
 latestSetsBalloon = [];
-var splitpric = setsBalloon.replace(/ sets of/g, " ").replace(/ and /g, " ");
-// .replace(/ and /g, " ");;
+var costToInflateAll = [];
+var splitpric = setsBalloon.replace(/ sets of/g, " ").replace(/ and /g, " ")
+.replace(/R /g, " ").replace(/R/g, " ").replace("R", " ");
 var setsBalloon = splitpric.split(", ");
 ////////////////////////////////////////////////////////////////////////////
-var splitpric = priceEach.replace(/ for /g, " ").replace(/ R/g, " ")
-  .replace(/ and /g, " ").replace(/ " "/g, " ");
+var splitpric = priceEach.replace(/R/g, "").replace(/for /g, "").replace(/ and /g, "");
 var priceEach = splitpric.split(", ")
-  // console.log(priceEach);
+  //console.log(priceEach);
   //console.log(setsBalloon);
 setsBalloon.forEach(function(setsBalloon) {
   newSetsBalloon.push(setsBalloon.split(" "));
 });
-///////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 priceEach.forEach(function(priceEach) {
   newPriceEach.push(priceEach.split(" "));
 });
 //console.log(newPriceEach);
 //console.log(newSetsBalloon);
-
 //console.log(newSetsBalloon);
 //console.log(newPriceEach);
 newSetsBalloon.forEach(function(item) {
@@ -33,24 +32,26 @@ newSetsBalloon.forEach(function(item) {
   var colors = 3;
   //convert array string to numbers
   latestSetsBalloon.push(Number((sets * colors).toFixed(2)));
-});console.log(latestSetsBalloon);
+});
 //////////////////////////////////////////////////////////////////////////////
  newPriceEach.forEach(function(item) {
- var pricsets = Number(item[0])
- var color = Number(item[1])
- var pricsets = 0;
-// console.log(item[0])
- latestPriceEach.push(Number((pricsets + color).toFixed(2)));
- //console.log(pricsets);
- console.log(pricsets);
-  });
-//  console.log(latestPriceEach);
+ var price = Number(item[0])
+ var setcolor = Number(item[1])
+ var setcolor = 0;
+ latestPriceEach.push(Number((price + setcolor).toFixed(2)));
+});
+//console.log(latestPriceEach);
+
+var total = latestSetsBalloon[0]*4+latestSetsBalloon[1]*5+latestSetsBalloon[2]*5.50;
 
 
- //console.log(latestPriceEach);
 
-
- // thisTotal = 0, thisAverage = 0;
- // // add elements of array together
- // for (var i = 0; i < pricsets.length; i++) {
- //   thisTotal += pricePerAvo[i];
+latestSetsBalloon.forEach(function(item){
+costToInflateAll.push(item * 2);
+});
+var total2 = costToInflateAll[0]+costToInflateAll[1]+costToInflateAll[2];
+console.log("Total BAlloon Cost:","R"+total);
+console.log(latestSetsBalloon);
+ console.log(latestPriceEach);
+console.log(costToInflateAll);
+console.log("Total Inflated Cost:","R"+total2)
