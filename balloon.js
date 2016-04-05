@@ -8,7 +8,7 @@ newSetsBalloon = [];
 latestSetsBalloon = [];
 var costToInflateAll = [];
 var splitpric = setsBalloon.replace(/ sets of/g, " ").replace(/ and /g, " ")
-.replace(/R /g, " ").replace(/R/g, " ").replace("R", " ");
+  .replace(/R /g, " ").replace(/R/g, " ").replace("R", " ");
 var setsBalloon = splitpric.split(", ");
 ////////////////////////////////////////////////////////////////////////////
 var splitpric = priceEach.replace(/R/g, "").replace(/for /g, "").replace(/ and /g, "");
@@ -34,24 +34,29 @@ newSetsBalloon.forEach(function(item) {
   latestSetsBalloon.push(Number((sets * colors).toFixed(2)));
 });
 //////////////////////////////////////////////////////////////////////////////
- newPriceEach.forEach(function(item) {
- var price = Number(item[0])
- var setcolor = Number(item[1])
- var setcolor = 0;
- latestPriceEach.push(Number((price + setcolor).toFixed(2)));
+newPriceEach.forEach(function(item) {
+  var price = Number(item[0])
+  var setcolor = Number(item[1])
+  var setcolor = 0;
+  latestPriceEach.push(Number((price + setcolor).toFixed(2)));
 });
 //console.log(latestPriceEach);
-
-var total = latestSetsBalloon[0]*4+latestSetsBalloon[1]*5+latestSetsBalloon[2]*5.50;
-
-
-
-latestSetsBalloon.forEach(function(item){
-costToInflateAll.push(item * 2);
+var total = latestSetsBalloon[0] * 4 + latestSetsBalloon[1] * 5 + latestSetsBalloon[2] * 5.50;
+latestSetsBalloon.forEach(function(item) {
+  costToInflateAll.push(item * 2);
 });
-var total2 = costToInflateAll[0]+costToInflateAll[1]+costToInflateAll[2];
-console.log("Total BAlloon Cost:","R"+total);
-console.log(latestSetsBalloon);
- console.log(latestPriceEach);
-console.log(costToInflateAll);
-console.log("Total Inflated Cost:","R"+total2)
+var total2 = costToInflateAll[0] + costToInflateAll[1] + costToInflateAll[2];
+var total3 = latestSetsBalloon[0] + latestSetsBalloon[1] + latestSetsBalloon[2];
+var total4 = total3 - 25;
+total5 = latestSetsBalloon[0]-5 +latestSetsBalloon[1]-1 + latestSetsBalloon[2]-3;
+console.log(total5)
+
+
+
+console.log(latestPriceEach, "Cost Of Each Balloon");
+console.log(latestSetsBalloon, "Each Color Order");
+console.log(costToInflateAll, "inflated Cost *R2");
+console.log("Total Inflated Cost:", "R" + total2)
+console.log("Total BAlloon Cost:", "R" + total);
+console.log("Available Balloons Are:",total3 );
+console.log("Spare Balloons Left:",total4);
