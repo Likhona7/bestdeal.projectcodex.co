@@ -7,6 +7,7 @@ latestPriceEach = [];
 newSetsBalloon = [];
 latestSetsBalloon = [];
 var costToInflateAll = [];
+
 var splitpric = setsBalloon.replace(/ sets of/g, " ").replace(/ and /g, " ")
   .replace(/R /g, " ").replace(/R/g, " ").replace("R", " ");
 var setsBalloon = splitpric.split(", ");
@@ -22,10 +23,7 @@ setsBalloon.forEach(function(setsBalloon) {
 priceEach.forEach(function(priceEach) {
   newPriceEach.push(priceEach.split(" "));
 });
-//console.log(newPriceEach);
-//console.log(newSetsBalloon);
-//console.log(newSetsBalloon);
-//console.log(newPriceEach);
+
 newSetsBalloon.forEach(function(item) {
   var sets = Number(item[0])
   var colors = Number(item[1])
@@ -45,18 +43,36 @@ var total = latestSetsBalloon[0] * 4 + latestSetsBalloon[1] * 5 + latestSetsBall
 latestSetsBalloon.forEach(function(item) {
   costToInflateAll.push(item * 2);
 });
+
+var PoppedLeftOver = [];
+sub1 = latestSetsBalloon[0] - 5;
+sub2 = latestSetsBalloon[1] - 1;
+sub3 = latestSetsBalloon[2] - 3;
+
+PoppedLeftOver.push(sub1, sub2, sub3)
+var min = Math.min.apply(null, PoppedLeftOver),
+  max = Math.max.apply(null, PoppedLeftOver);
+
+
+
+
 var total2 = costToInflateAll[0] + costToInflateAll[1] + costToInflateAll[2];
 var total3 = latestSetsBalloon[0] + latestSetsBalloon[1] + latestSetsBalloon[2];
-var total4 = total3 - 25;
-total5 = latestSetsBalloon[0]-5 +latestSetsBalloon[1]-1 + latestSetsBalloon[2]-3;
-console.log(total5)
-
-
+var minusBytwentyfive = 25;
+var total4 = total3 - minusBytwentyfive;
+total5 = latestSetsBalloon[0] - 5 + latestSetsBalloon[1] - 1 + latestSetsBalloon[2] - 3;
+var total6 = minusBytwentyfive - total5;
+// var total7 = latestSetsBalloon[0]
 
 console.log(latestPriceEach, "Cost Of Each Balloon");
 console.log(latestSetsBalloon, "Each Color Order");
 console.log(costToInflateAll, "inflated Cost *R2");
 console.log("Total Inflated Cost:", "R" + total2)
 console.log("Total BAlloon Cost:", "R" + total);
-console.log("Available Balloons Are:",total3 );
-console.log("Spare Balloons Left:",total4);
+console.log("Available Balloons Are:", total3);
+console.log("Spare Balloons Left:", total4);
+console.log("Balloon Left After Popped:", total5);
+console.log("People Not having balloons:", total6);
+console.log(PoppedLeftOver);
+console.log("Blue Has More Balloon:",max);
+console.log("Yellow Has Least Balloon:",min);
