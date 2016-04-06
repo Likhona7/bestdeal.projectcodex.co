@@ -73,6 +73,6 @@ console.log("Available Balloons Are:", total3);
 console.log("Spare Balloons Left:", total4);
 console.log("Balloon Left After Popped:", total5);
 console.log("People Not having balloons:", total6);
-console.log(PoppedLeftOver);
+console.log("Subtracted Balloon Answer",PoppedLeftOver);
 console.log("Blue Has More Balloon:",max);
 console.log("Yellow Has Least Balloon:",min);
